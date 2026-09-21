@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة خاصة 💌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #66717d;
+            --cream: #fdf9f6;
+            --rose: #d64b6a;
+            --rose-soft: #f7d6dd;
+            --gold: #c9a961;
+            --line: #ece4dd;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: 'Tajawal', 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background .4s, color .4s;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(214, 75, 106, 0.06), transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(201, 169, 97, 0.06), transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, p { margin: 0; }
+
+        h1, h2, h3 { font-family: 'Tajawal', 'Space Grotesk', sans-serif; }
+
+        /* ============================================
+           شاشة كلمة المرور
+           ============================================ */
+        #lockScreen {
+            position: fixed;
+            inset: 0;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 28px;
+            transition: opacity .8s, visibility .8s;
+        }
+
+        #lockScreen.unlocked {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .lock-box {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: fadeUp .9s .2s forwards;
+            opacity: 0;
+        }
+
+        .lock-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 32px rgba(214, 75, 106, 0.25);
+        }
+
+        .lock-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .lock-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .lock-subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .lock-input-wrap {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .lock-input {
+            width: 100%;
+            padding: 18px 22px;
+            border: 2px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            font: 500 1.05rem 'Tajawal', sans-serif;
+            color: var(--ink);
+            text-align: center;
+            letter-spacing: 2px;
+            outline: none;
+            transition: .3s;
+        }
+
+        .lock-input:focus {
+            border-color: var(--rose);
+            box-shadow: 0 0 0 4px rgba(214, 75, 106, 0.1);
+        }
+
+        .lock-input.error {
+            border-color: #e74c3c;
+            animation: shake .4s;
+        }
+
+        .lock-btn {
+            width: 100%;
+            padding: 18px;
+            border: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--rose), var(--gold));
+            color: #fff;
+            font: 700 1.05rem 'Tajawal', sans-serif;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 10px 24px rgba(214, 75, 106, 0.25);
+        }
+
+        .lock-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(214, 75, 106, 0.35);
+        }
+
+        .lock-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .lock-hint {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: .85rem;
+            line-height: 1.6;
+            opacity: .8;
+        }
+
+        .lock-error {
+            color: #e74c3c;
+            font-size: .9rem;
+            margin-top: 12px;
+            min-height: 20px;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           المحتوى الرئيسي
+           ============================================ */
+        #mainContent {
+            opacity: 0;
+            transition: opacity 1s .3s;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #mainContent.visible {
+            opacity: 1;
+        }
+
+        .wrap {
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Eyebrow */
+        .eyebrow {
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 6px;
+            font-size: .75rem;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp .9s .2s forwards;
+        }
+
+        /* العنوان */
+        h1 {
+            font-size: clamp(2.2rem, 7vw, 4.2rem);
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp .9s .4s forwards;
+        }
+
+        h1 .name {
+            color: var(--rose);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 .name::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            right: 0;
+            width: 0;
+            height: 8px;
+            background: var(--gold);
+            z-index: -1;
+            animation: highlight 1.2s 1.4s forwards;
+            border-radius: 6px;
+            opacity: .5;
+        }
+
+        /* فاصل أنيق */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 32px auto;
+            max-width: 240px;
+            opacity: 0;
+            animation: fadeUp .9s .6s forwards;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line), transparent);
+        }
+
+        .divider span {
+            color: var(--gold);
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+        }
+
+        /* الوصف */
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 2;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            opacity: 0;
+            animation: fadeUp .9s .8s forwards;
+        }
+
+        /* Typewriter */
+        .typewriter {
+            font-family: 'Tajawal', 'Space Grotesk', sans-serif;
+            font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 44px;
+            min-height: 2.2rem;
+            opacity: 0;
+            animation: fadeUp .9s 1s forwards;
+        }
+
+        .typewriter::after {
+            content: '|';
+            color: var(--rose);
+            animation: blink .7s infinite;
+            margin-right: 6px;
+            font-weight: 300;
+        }
+
+        /* العدّاد */
+        .counter-label {
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeUp .9s 1.1s forwards;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp .9s 1.2s forwards;
+        }
+
+        .counter-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 16px 20px;
+            min-width: 82px;
+            border: 1px solid var(--line);
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(214, 75, 106, 0.08);
+        }
+
+        .counter-item strong {
+            font: 700 1.7rem 'Space Grotesk', 'Tajawal', sans-serif;
+            color: var(--rose);
+            display: block;
+            line-height: 1;
+        }
+
+        .counter-item small {
+            color: var(--muted);
+            font-size: .75rem;
+            display: block;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        /* الأزرار */
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp .9s 1.4s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 26px;
+            border-radius: 30px;
+            border: 2px solid var(--rose);
+            background: var(--rose);
+            color: #fff;
+            font: 700 1rem 'Tajawal', sans-serif;
+            cursor: pointer;
+            transition: .3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(214, 75, 106, 0.25);
+        }
+
+        .btn.alt {
+            background: transparent;
+            color: var(--rose);
+        }
+
+        .btn.alt:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 12px 24px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 56px;
+            color: var(--muted);
+            font-size: .85rem;
+            opacity: 0;
+            animation: fadeUp .9s 1.6s forwards;
+            letter-spacing: 1px;
+        }
+
+        .footer .heart-small {
+            color: var(--rose);
+            display: inline-block;
+            animation: beatSmall 1.6s infinite;
+        }
+
+        /* القلوب المتطايرة */
+        .floating-hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 500;
+            overflow: hidden;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            bottom: -50px;
+            font-size: 1rem;
+            opacity: 0;
+            animation: floatHeart linear forwards;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        @keyframes highlight {
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes floatHeart {
+            0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+            10% { opacity: .7; }
+            90% { opacity: .7; }
+            100% { opacity: 0; transform: translateY(-110vh) rotate(360deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        @keyframes beatSmall {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { letter-spacing: -1px; }
+            .counter { gap: 8px; }
+            .counter-item { padding: 12px 14px; min-width: 68px; }
+            .counter-item strong { font-size: 1.4rem; }
+            .counter-item small { font-size: .68rem; }
+            .actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .eyebrow { letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         شاشة كلمة المرور
+         ============================================ -->
+    <div id="lockScreen">
+        <div class="lock-box">
+            <div class="lock-icon">
+                <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+            </div>
+            <h2 class="lock-title">رسالة خاصة</h2>
+            <p class="lock-subtitle">أدخلي كلمة المرور لفتح الرسالة</p>
+
+            <div class="lock-input-wrap">
+                <input
+                    type="password"
+                    id="passwordInput"
+                    class="lock-input"
+                    placeholder="• • • • • • •"
+                    autocomplete="off"
+                    inputmode="numeric"
+                >
+            </div>
+
+            <button class="lock-btn" id="unlockBtn">
+                افتحي الرسالة
+            </button>
+
+            <div class="lock-error" id="lockError"></div>
+
+            <p class="lock-hint">
+                تلميح: تاريخ مميز جداً 💛
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         المحتوى الرئيسي
+         ============================================ -->
+    <div id="mainContent">
+        <div class="wrap">
+            <div class="eyebrow">✦ إلى أغلى إنسانة ✦</div>
+
+            <h1>
+                <span class="name" id="herName">شهودتي</span>،<br>
+                أنتِ حياتي.
+            </h1>
+
+            <div class="divider"><span>✦</span></div>
+
+            <p class="subtitle">
+                كل يوم معك هو هدية. وكل لحظة بدونك انتظار. أردت أن أصنع لكِ شيئاً صغيراً يعبّر عن جزء بسيط مما أشعر به نحوك.
+            </p>
+
+            <div class="typewriter" id="typewriter"></div>
+
+            <p class="counter-label" id="counterLabel">منذ أن بدأت حكايتنا</p>
+
+            <div class="counter" id="counter">
+                <div class="counter-item">
+                    <strong id="days">0</strong>
+                    <small>يوم</small>
+                </div>
+                <div class="counter-item">
+                    <strong id="hours">0</strong>
+                    <small>ساعة</small>
+                </div>
+                <div class="counter-item">
+                    <strong id="minutes">0</strong>
+                    <small>دقيقة</small>
+                </div>
+                <div class="counter-item">
+                    <strong id="seconds">0</strong>
+                    <small>ثانية</small>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="spreadLove">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    اضغطي هنا
+                </button>
+                <button class="btn alt" id="secretMessage">
+                    رسالة سرية ✉️
+                </button>
+            </div>
+
+            <div class="footer">
+                صُنع بحب <span class="heart-small">♥</span> خصيصاً لكِ
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <script>
+        // ============================================
+        // ✏️ الإعدادات
+        // ============================================
+        const CONFIG = {
+            // 🔐 كلمة المرور (مشفرة Base64)
+            // "2102008" → "MjEwMjAwOA=="
+            passwordEncoded: "MjEwMjAwOA==",
+
+            // الاسم
+            herName: "شهودتي",
+
+            // تاريخ البداية: 7 يوليو 2026
+            // [السنة، الشهر-1، اليوم، الساعة، الدقيقة]
+            startDate: [2026, 6, 7, 0, 0],
+
+            // جمل Typewriter
+            phrases: [
+                "أحبك يا شهودتي ❤️",
+                "أشتاق إليك",
+                "أنتِ كل شيء",
+                "أنتِ السبب في ابتسامتي",
+                "أحبك أكثر كل يوم",
+            ],
+
+            // الرسالة السرية
+            secretMessage: "شهودتي، أنتِ أجمل ما حدث في حياتي. شكراً لأنكِ موجودة. أحبك ❤️",
+        };
+        // ============================================
+
+        // ============================================
+        // 🔐 نظام كلمة المرور (Base64)
+        // ============================================
+        const lockScreen = document.getElementById('lockScreen');
+        const mainContent = document.getElementById('mainContent');
+        const passwordInput = document.getElementById('passwordInput');
+        const unlockBtn = document.getElementById('unlockBtn');
+        const lockError = document.getElementById('lockError');
+
+        function unlock() {
+            const entered = passwordInput.value.trim();
+
+            // تشفير ما أدخله المستخدم ومقارنته
+            let enteredEncoded = '';
+            try {
+                enteredEncoded = btoa(entered);
+            } catch (e) {
+                enteredEncoded = '';
+            }
+
+            if (enteredEncoded === CONFIG.passwordEncoded) {
+                lockScreen.classList.add('unlocked');
+                mainContent.classList.add('visible');
+                lockError.textContent = '';
+                startExperience();
+            } else {
+                passwordInput.classList.add('error');
+                lockError.textContent = 'كلمة المرور غير صحيحة، حاولي مرة أخرى';
+                setTimeout(() => passwordInput.classList.remove('error'), 500);
+            }
+        }
+
+        unlockBtn.addEventListener('click', unlock);
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') unlock();
+        });
+
+        // ============================================
+        // ✨ تجربة المحتوى
+        // ============================================
+        let experienceStarted = false;
+
+        function startExperience() {
+            if (experienceStarted) return;
+            experienceStarted = true;
+
+            // تعيين الاسم
+            document.getElementById('herName').textContent = CONFIG.herName;
+
+            // Typewriter
+            const typewriterEl = document.getElementById('typewriter');
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentPhrase = CONFIG.phrases[phraseIndex];
+                if (isDeleting) {
+                    typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let typeSpeed = isDeleting ? 45 : 90;
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    typeSpeed = 2200;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % CONFIG.phrases.length;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            // العدّاد (ذكي: تصاعدي أو تنازلي)
+            const startDate = new Date(...CONFIG.startDate);
+            const counterLabel = document.getElementById('counterLabel');
+
+            function updateCounter() {
+                const now = new Date();
+                const diff = now - startDate;
+                const absDiff = Math.abs(diff);
+
+                const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((absDiff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((absDiff / (1000 * 60)) % 60);
+                const seconds = Math.floor((absDiff / 1000) % 60);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+
+                // تغيير النص حسب الحالة
+                if (diff < 0) {
+                    counterLabel.textContent = 'باقي على بداية حكايتنا';
+                } else {
+                    counterLabel.textContent = 'منذ أن بدأت حكايتنا';
+                }
+            }
+            updateCounter();
+            setInterval(updateCounter, 1000);
+
+            // الأزرار
+            document.getElementById('spreadLove').addEventListener('click', () => {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(createHeart, i * 70);
+                }
+            });
+
+            document.getElementById('secretMessage').addEventListener('click', () => {
+                alert(CONFIG.secretMessage);
+            });
+
+            // قلوب تلقائية كل 3 ثوانٍ
+            setInterval(createHeart, 3000);
+        }
+
+        // ============================================
+        // 💕 القلوب المتطايرة
+        // ============================================
+        const heartsContainer = document.getElementById('floatingHearts');
+        const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '🌹'];
+
+        function createHeart() {
+            const heart = document.createElement('span');
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.right = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 1.5 + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 12000);
+        }
+
+        // التركيز التلقائي على حقل كلمة المرور
+        passwordInput.focus();
+    </script>
+</body>
+</html>
