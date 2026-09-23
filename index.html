@@ -667,8 +667,9 @@
                     inputmode="numeric"
                 >
             </div>
-            <button class="lock-btn" id="unlockBtn"
->فتحي الرسالة</button>
+            <button class="lock-btn" id="unlockBtn">
+               افتحي الرسالة
+            </button>
             <div class="lock-error" id="lockError"></div>
             <p class="lock-hint">كلمة المرور: <span class="hint-icon">❗</span>تلميح: تاريخ مميز جدا❤️</p>
         </div>
@@ -744,9 +745,9 @@
             // الاسم
             herName: "شهودتي❤️",
 
-            // تاريخ البداية: 23 سبتمبر 2026
-            // [السنة， الشهر-1， اليوم， الساعة， الدقيقة]
-            startDate: [2026, 9, 23, 0, 0],
+            // تاريخ البداية: 7 يوليو 2026
+            // [السنة, الشهر-1, اليوم, الساعة, الدقيقة]
+            startDate: [2026, 6, 7, 0, 0],
 
             // جمل Typewriter
             phrases: [
@@ -853,7 +854,7 @@
                 document.getElementById('seconds').textContent = seconds;
 
                 if (diff < 0) {
-                    counterLabel.textContent = 'باقي على بداية حكايتنا';
+                    counterLabel.textContent = 'منذ أن بدأت حكايتنا';
                 } else {
                     counterLabel.textContent = 'منذ أن بدأت حكايتنا';
                 }
