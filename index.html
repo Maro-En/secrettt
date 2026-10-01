@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بحبك ❤️</title>
-    <meta name="description" content="بحبك ❤️">
+    <title>كل سنة وانت طيبة ❤️</title>
+    <meta name="description" content="كل سنة وانت طيبة ❤️">
     <link rel="icon" type="image/jpeg" href="https://i.pinimg.com/736x/8b/b2/99/8bb299e11711c390cb92009123d340fa.jpg">
 
     <!-- ===== معاينة واتساب ===== -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://maro-en.github.io/secrett/">
-    <meta property="og:title" content="بحبك ❤️">
-    <meta property="og:description" content="بحبك ❤️">
+    <meta property="og:title" content="كل سنة وانت طيبة ❤️">
+    <meta property="og:description" content="كل سنة وانت طيبة ❤️">
     <meta property="og:image" content="https://i.pinimg.com/736x/8b/b2/99/8bb299e11711c390cb92009123d340fa.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="بحبك ❤️">
+    <meta property="og:image:alt" content="عيد ميلاد سعيد ❤️">
 
     <!-- ===== معاينة تويتر ===== -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="بحبك ❤️">
-    <meta name="twitter:description" content="بحبك ❤️">
+    <meta name="twitter:title" content="عيد ميلاد سعيد ❤️">
+    <meta name="twitter:description" content="عيد ميلاد سعيد ❤️">
     <meta name="twitter:image" content="https://i.pinimg.com/736x/8b/b2/99/8bb299e11711c390cb92009123d340fa.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,13 +30,13 @@
         :root {
             --ink: #1a1a2e;
             --muted: #7a7a8c;
-            --cream: #faf7f2;
+            --cream: #fde0ef;
             --rose: #c94b6a;
             --rose-soft: #f5dde3;
             --rose-glow: rgba(201, 75, 106, 0.15);
             --gold: #b8954e;
-            --gold-soft: #f0e6d3;
-            --line: #e8e0d8;
+            --gold-soft: #d5d3f0;
+            --line: #fc65ca;
             --white: #ffffff;
             --shadow-sm: 0 2px 8px rgba(26, 26, 46, 0.04);
             --shadow-md: 0 8px 24px rgba(26, 26, 46, 0.06);
@@ -65,7 +65,7 @@
             background:
                 radial-gradient(ellipse at 20% 0%, rgba(201, 75, 106, 0.05), transparent 50%),
                 radial-gradient(ellipse at 80% 100%, rgba(184, 149, 78, 0.05), transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.8), transparent 70%);
+                radial-gradient(ellipse at 50% 50%, rgba(255, 186, 210, 0.8), transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -150,7 +150,7 @@
         .lock-icon svg {
             width: 30px;
             height: 30px;
-            fill: #fff;
+            fill: #ffffff;
         }
 
         .lock-title {
@@ -190,28 +190,25 @@
         }
 
         .lock-input::placeholder {
-            color: #c5c5d0;
+            color: #d0d0d2;
             letter-spacing: 6px;
             font-size: 0.85rem;
         }
-
         .lock-input:focus {
             border-color: var(--rose);
             box-shadow: 0 0 0 4px var(--rose-glow), var(--shadow-md);
         }
-
         .lock-input.error {
             border-color: #e74c3c;
             animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
         }
-
         .lock-btn {
             width: 100%;
             padding: 18px;
             border: 0;
             border-radius: 16px;
             background: linear-gradient(145deg, var(--rose), #a83a56);
-            color: #fff;
+            color: #ffdef8;
             font: 700 1.05rem 'Tajawal', sans-serif;
             cursor: pointer;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -219,7 +216,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .lock-btn::before {
             content: '';
             position: absolute;
@@ -228,18 +224,14 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-
         .lock-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 40px rgba(201, 75, 106, 0.35);
         }
-
         .lock-btn:hover::before { opacity: 1; }
-
         .lock-btn:active {
             transform: translateY(-1px);
         }
-
         .lock-hint {
             margin-top: 24px;
             color: var(--muted);
@@ -248,12 +240,10 @@
             opacity: 0.7;
             font-weight: 400;
         }
-
         .lock-hint .hint-icon {
             color: var(--gold);
             margin-left: 4px;
         }
-
         .lock-error {
             color: #e74c3c;
             font-size: 0.88rem;
@@ -262,7 +252,6 @@
             font-weight: 500;
             transition: all 0.3s;
         }
-
         /* ============================================
            المحتوى الرئيسي
            ============================================ */
@@ -277,18 +266,15 @@
             position: relative;
             z-index: 1;
         }
-
         #mainContent.visible {
             opacity: 1;
         }
-
         .wrap {
             max-width: 680px;
             width: 100%;
             text-align: center;
             position: relative;
         }
-
         .wrap::before,
         .wrap::after {
             content: '';
@@ -299,10 +285,8 @@
             background: linear-gradient(180deg, transparent, var(--line), transparent);
             opacity: 0.5;
         }
-
         .wrap::before { right: -40px; }
         .wrap::after { left: -40px; }
-
         .eyebrow {
             color: var(--gold);
             font-weight: 700;
@@ -315,7 +299,6 @@
             position: relative;
             display: inline-block;
         }
-
         .eyebrow::before,
         .eyebrow::after {
             content: '';
@@ -325,10 +308,8 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-
         .eyebrow::before { right: -45px; }
         .eyebrow::after { left: -45px; }
-
         h1 {
             font-size: clamp(2.4rem, 7vw, 4.5rem);
             line-height: 1.12;
@@ -338,13 +319,11 @@
             opacity: 0;
             animation: fadeUp 1s 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-
         h1 .name {
             color: var(--rose);
             position: relative;
             display: inline-block;
         }
-
         h1 .name::after {
             content: '';
             position: absolute;
@@ -358,7 +337,6 @@
             border-radius: 8px;
             opacity: 0.6;
         }
-
         .divider {
             display: flex;
             align-items: center;
@@ -369,7 +347,6 @@
             opacity: 0;
             animation: fadeUp 1s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-
         .divider::before,
         .divider::after {
             content: '';
@@ -378,14 +355,12 @@
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
             opacity: 0.4;
         }
-
         .divider span {
             color: var(--gold);
             font-size: 0.9rem;
             letter-spacing: 4px;
             opacity: 0.7;
         }
-
         .subtitle {
             color: var(--muted);
             font-size: 1.05rem;
@@ -411,7 +386,6 @@
             justify-content: center;
             gap: 4px;
         }
-
         .typewriter::after {
             content: '';
             display: inline-block;
@@ -422,7 +396,6 @@
             border-radius: 2px;
             vertical-align: middle;
         }
-
         .counter-label {
             color: var(--muted);
             font-size: 0.88rem;
@@ -432,7 +405,6 @@
             animation: fadeUp 1s 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             font-weight: 500;
         }
-
         .counter {
             display: flex;
             justify-content: center;
@@ -442,7 +414,6 @@
             opacity: 0;
             animation: fadeUp 1s 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-
         .counter-item {
             background: var(--white);
             border-radius: 16px;
@@ -454,7 +425,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .counter-item::before {
             content: '';
             position: absolute;
@@ -466,17 +436,14 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-
         .counter-item:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
             border-color: var(--rose-soft);
         }
-
         .counter-item:hover::before {
             opacity: 1;
         }
-
         .counter-item strong {
             font: 700 1.8rem 'Space Grotesk', 'Tajawal', sans-serif;
             color: var(--rose);
@@ -484,11 +451,9 @@
             line-height: 1;
             transition: transform 0.3s;
         }
-
         .counter-item:hover strong {
             transform: scale(1.05);
         }
-
         .counter-item small {
             color: var(--muted);
             font-size: 0.72rem;
@@ -497,7 +462,6 @@
             letter-spacing: 1.5px;
             font-weight: 500;
         }
-
         .actions {
             display: flex;
             gap: 14px;
@@ -506,7 +470,6 @@
             opacity: 0;
             animation: fadeUp 1s 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-
         .btn {
             display: inline-flex;
             align-items: center;
@@ -515,7 +478,7 @@
             border-radius: 50px;
             border: 1.5px solid var(--rose);
             background: var(--rose);
-            color: #fff;
+            color: #f870e8cc;
             font: 700 0.98rem 'Tajawal', sans-serif;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -524,7 +487,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .btn::before {
             content: '';
             position: absolute;
@@ -533,34 +495,28 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 40px rgba(201, 75, 106, 0.35);
         }
-
         .btn:hover::before { opacity: 1; }
-
         .btn.alt {
             background: transparent;
             color: var(--rose);
             box-shadow: none;
             border-color: var(--rose);
         }
-
         .btn.alt:hover {
             background: var(--gold);
             border-color: var(--gold);
-            color: #fff;
+            color:#ffbbefd6;
             box-shadow: 0 16px 40px rgba(184, 149, 78, 0.3);
         }
-
         .btn svg {
             width: 17px;
             height: 17px;
             fill: currentColor;
         }
-
         .footer {
             margin-top: 60px;
             color: var(--muted);
@@ -570,14 +526,12 @@
             letter-spacing: 1.5px;
             font-weight: 400;
         }
-
         .footer .heart-small {
             color: var(--rose);
             display: inline-block;
             animation: beatSmall 1.8s ease-in-out infinite;
             margin: 0 4px;
         }
-
         .floating-hearts {
             position: fixed;
             inset: 0;
@@ -585,7 +539,6 @@
             z-index: 500;
             overflow: hidden;
         }
-
         .floating-hearts span {
             position: absolute;
             bottom: -60px;
@@ -594,28 +547,23 @@
             animation: floatHeart linear forwards;
             filter: drop-shadow(0 2px 4px rgba(201, 75, 106, 0.2));
         }
-
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(28px); }
             to { opacity: 1; transform: none; }
         }
-
         @keyframes highlight {
             to { width: 100%; }
         }
-
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
         @keyframes floatHeart {
             0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.5); }
             10% { opacity: 0.8; transform: translateY(-10vh) rotate(30deg) scale(1); }
             90% { opacity: 0.8; }
             100% { opacity: 0; transform: translateY(-110vh) rotate(360deg) scale(0.8); }
         }
-
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20% { transform: translateX(-10px); }
@@ -623,40 +571,31 @@
             60% { transform: translateX(-6px); }
             80% { transform: translateX(6px); }
         }
-
         @keyframes beatSmall {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.25); }
         }
-
         @media (max-width: 700px) {
             .wrap::before,
             .wrap::after { display: none; }
-
             .eyebrow::before,
             .eyebrow::after { width: 20px; }
             .eyebrow::before { right: -30px; }
             .eyebrow::after { left: -30px; }
         }
-
         @media (max-width: 600px) {
             h1 { letter-spacing: -1px; }
-
             .counter { gap: 8px; }
             .counter-item { padding: 14px 16px; min-width: 72px; border-radius: 14px; }
             .counter-item strong { font-size: 1.5rem; }
             .counter-item small { font-size: 0.68rem; }
-
             .actions { flex-direction: column; }
             .btn { width: 100%; justify-content: center; }
-
             .eyebrow { letter-spacing: 5px; }
             .eyebrow::before,
             .eyebrow::after { display: none; }
-
             .lock-box::before { top: -40px; }
         }
-
         @media (max-width: 380px) {
             .counter-item { min-width: 62px; padding: 12px 12px; }
             .counter-item strong { font-size: 1.3rem; }
@@ -664,7 +603,6 @@
     </style>
 </head>
 <body>
-
     <!-- ============================================
          شاشة كلمة المرور
          ============================================ -->
@@ -675,7 +613,6 @@
             </div>
             <h2 class="lock-title">رسالة خاصة</h2>
             <p class="lock-subtitle">أدخلي كلمة المرور لفتح الرسالة</p>
-
             <div class="lock-input-wrap">
                 <input
                     type="password"
@@ -693,29 +630,22 @@
             <p class="lock-hint">كلمة المرور: <span class="hint-icon">❗</span>تلميح: تاريخ مميز جدا❤️</p>
         </div>
     </div>
-
    <!-- ============================================
          المحتوى الرئيسي
          ============================================ -->
     <div id="mainContent">
         <div class="wrap">
-            <div class="eyebrow">✦ إلى أغلى إنسانة ✦</div>
-
+            <div class="eyebrow">✦ My Princess, I love You✦</div>
             <h1>
                 <span class="name" id="herName">شهودتي</span>،<br>
                 أنتِ حياتي.
             </h1>
-
             <div class="divider"><span>✦</span></div>
-
             <p class="subtitle">
-                كل يوم معك هو هدية. وكل لحظة بدونك انتظار. أردت أن أصنع لكِ شيئاً صغيراً يعبّر عن جزء بسيط مما أشعر به نحوك.
+               حاجة بسيطة لكن متأكد هتعجبك ربنا يديمك ليا بموت فيكي ❤️
             </p>
-
             <div class="typewriter" id="typewriter"></div>
-
-            <p class="counter-label" id="counterLabel">منذ أن بدأت حكايتنا</p>
-
+            <p class="counter-label" id="counterLabel">❤️منذ وجود اغلي شخص في حياتي ونصفي الاخر </p>
             <div class="counter" id="counter">
                 <div class="counter-item">
                     <strong id="days">0</strong>
@@ -734,7 +664,6 @@
                     <small>ثانية</small>
                 </div>
             </div>
-
             <div class="actions">
                 <button class="btn" id="spreadLove">
                     <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -744,44 +673,35 @@
                     رسالة سرية ✉️
                 </button>
             </div>
-
             <div class="footer">
                 صُنع بحب <span class="heart-small">♥</span> خصيصاً لكِ
             </div>
         </div>
     </div>
-
     <div class="floating-hearts" id="floatingHearts"></div>
-
     <script>
         // ============================================
         // ✏️ الإعدادات
         // ============================================
         const CONFIG = {
-            // 🔐 كلمة المرور (اكتبها مباشرة هنا)
-            password: "772026",
-
+            // 🔐 كلمة المرور (تاريخ الميلاد: 2/10/2008)
+            password: "2102008",
             // الاسم
             herName: "شهودتي❤️",
-
-            // تاريخ البداية: 7 يوليو 2026
+            // تاريخ البداية: 2 أكتوبر 2008
             // [السنة, الشهر-1, اليوم, الساعة, الدقيقة]
-            startDate: [2026, 6, 7, 0, 0],
-
+            startDate: [2008, 9, 2, 0, 0],
             // جمل Typewriter
             phrases: [
-                "أحبك يا شهودتي ❤️",
-                "أشتاق إليك",
-                "أنتِ كل شيء",
+                "كل سنة وانت طيبة يا حبيبتي ❤️",
+                "أحبكِ أكثر كل يوم",
+                "أنتِ أجمل هدية في حياتي",
                 "أنتِ السبب في ابتسامتي",
-                "أحبك أكثر كل يوم",
+                "أحبكِ إلى ما لا نهاية",
             ],
-
             // الرسالة السرية
-            secretMessage: "شهودتي، أنتِ أجمل ما حدث في حياتي. شكراً لأنكِ موجودة. أحبك ❤️",
+            secretMessage: "شهودتي،كل سنة وانت طيبة يا حبيبتي , ربنا يديمك ليا بعشقك , كان نفسي ابقي موجود جنبك فعليا لكن هانت يا حبيبتي قريب هنحتفل بيه واحنا سوا ❤️",
         };
-        // ============================================
-
         // ============================================
         // 🔐 نظام كلمة المرور (مقارنة مباشرة)
         // ============================================
@@ -790,10 +710,8 @@
         const passwordInput = document.getElementById('passwordInput');
         const unlockBtn = document.getElementById('unlockBtn');
         const lockError = document.getElementById('lockError');
-
         function unlock() {
             const entered = passwordInput.value.trim();
-
             if (entered === CONFIG.password) {
                 lockScreen.classList.add('unlocked');
                 mainContent.classList.add('visible');
@@ -805,29 +723,23 @@
                 setTimeout(() => passwordInput.classList.remove('error'), 600);
             }
         }
-
         unlockBtn.addEventListener('click', unlock);
         passwordInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') unlock();
         });
-
         // ============================================
         // ✨ تجربة المحتوى
         // ============================================
         let experienceStarted = false;
-
         function startExperience() {
             if (experienceStarted) return;
             experienceStarted = true;
-
             document.getElementById('herName').textContent = CONFIG.herName;
-
             // Typewriter
             const typewriterEl = document.getElementById('typewriter');
             let phraseIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
-
             function type() {
                 const currentPhrase = CONFIG.phrases[phraseIndex];
                 if (isDeleting) {
@@ -837,7 +749,6 @@
                     typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
                     charIndex++;
                 }
-
                 let typeSpeed = isDeleting ? 40 : 85;
 
                 if (!isDeleting && charIndex === currentPhrase.length) {
@@ -848,59 +759,48 @@
                     phraseIndex = (phraseIndex + 1) % CONFIG.phrases.length;
                     typeSpeed = 600;
                 }
-
                 setTimeout(type, typeSpeed);
             }
             type();
-
             // العدّاد
             const startDate = new Date(...CONFIG.startDate);
             const counterLabel = document.getElementById('counterLabel');
-
             function updateCounter() {
                 const now = new Date();
                 const diff = now - startDate;
                 const absDiff = Math.abs(diff);
-
                 const days = Math.floor(absDiff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((absDiff / (1000 * 60 * 60)) % 24);
                 const minutes = Math.floor((absDiff / (1000 * 60)) % 60);
                 const seconds = Math.floor((absDiff / 1000) % 60);
-
                 document.getElementById('days').textContent = days;
                 document.getElementById('hours').textContent = hours;
                 document.getElementById('minutes').textContent = minutes;
                 document.getElementById('seconds').textContent = seconds;
-
                 if (diff < 0) {
-                    counterLabel.textContent = 'منذ أن بدأت حكايتنا';
+                    counterLabel.textContent = 'منذ وجود اغلي شخص في حياتي ونصفي الاخر';
                 } else {
-                    counterLabel.textContent = 'منذ أن بدأت حكايتنا';
+                    counterLabel.textContent = 'منذ وجود اغلي شخص في حياتي ونصفي الاخر';
                 }
             }
             updateCounter();
             setInterval(updateCounter, 1000);
-
             // الأزرار
             document.getElementById('spreadLove').addEventListener('click', () => {
                 for (let i = 0; i < 24; i++) {
                     setTimeout(createHeart, i * 60);
                 }
             });
-
             document.getElementById('secretMessage').addEventListener('click', () => {
                 alert(CONFIG.secretMessage);
             });
-
             setInterval(createHeart, 3500);
         }
-
         // ============================================
         // 💕 القلوب المتطايرة
         // ============================================
         const heartsContainer = document.getElementById('floatingHearts');
-        const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '🌹', '✨'];
-
+        const heartEmojis = [ '💕', '💖', '💗', '💓', '🌹', '✨'];
         function createHeart() {
             const heart = document.createElement('span');
             heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
@@ -909,10 +809,8 @@
             heart.style.animationDuration = (Math.random() * 5 + 7) + 's';
             heart.style.animationDelay = Math.random() * 2 + 's';
             heartsContainer.appendChild(heart);
-
             setTimeout(() => heart.remove(), 14000);
         }
-
         passwordInput.focus();
     </script>
 </body>
